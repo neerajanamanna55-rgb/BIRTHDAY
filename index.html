@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Happy Birthday My Love</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #111;
+            overflow: hidden;
+            font-family: cursive;
+        }
+
+        /* Pink Birthday Card */
+        .card {
+            width: 90%;
+            max-width: 650px;
+            height: 500px;
+
+            background: #f5adb9;
+            border-radius: 35px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            position: relative;
+            overflow: hidden;
+
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        /* Small sparkling dots */
+        .sparkle {
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+
+            animation: sparkle 2s infinite;
+        }
+
+        .s1 {
+            top: 70px;
+            left: 20%;
+            animation-delay: .3s;
+        }
+
+        .s2 {
+            top: 120px;
+            right: 20%;
+            animation-delay: .8s;
+        }
+
+        .s3 {
+            top: 180px;
+            left: 12%;
+            animation-delay: 1.2s;
+        }
+
+        .s4 {
+            top: 150px;
+            right: 12%;
+            animation-delay: 1.6s;
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(.5);
+            }
+
+            50% {
+                opacity: .9;
+                transform: scale(1.3);
+            }
+        }
+
+
+        /* Cake */
+        .cake {
+            position: absolute;
+
+            width: 190px;
+            height: 160px;
+
+            bottom: 150px;
+
+            animation: cakeIn 1.5s ease-out forwards;
+        }
+
+        @keyframes cakeIn {
+            0% {
+                transform: translateY(220px);
+                opacity: 0;
+            }
+
+            70% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+
+        /* Cake base */
+        .cake-body {
+            position: absolute;
+
+            width: 155px;
+            height: 65px;
+
+            left: 18px;
+            bottom: 10px;
+
+            background: #96776d;
+
+            border-radius: 5px;
+        }
+
+
+        /* Cream */
+        .cream {
+            position: absolute;
+
+            width: 155px;
+            height: 38px;
+
+            left: 18px;
+            bottom: 62px;
+
+            background: #fffaf2;
+
+            border-radius: 12px 12px 6px 6px;
+        }
+
+
+        /* Chocolate layer */
+        .cream::after {
+            content: "";
+
+            position: absolute;
+
+            width: 155px;
+            height: 12px;
+
+            left: 0;
+            bottom: -8px;
+
+            background: #86665d;
+        }
+
+
+        /* Candle */
+        .candle {
+            position: absolute;
+
+            width: 12px;
+            height: 65px;
+
+            left: 89px;
+            bottom: 98px;
+
+            background: #fff;
+
+            opacity: 0;
+
+            animation: candleDrop 1s ease-out 1.5s forwards;
+        }
+
+        @keyframes candleDrop {
+            0% {
+                opacity: 0;
+                transform: translateY(-180px);
+            }
+
+            70% {
+                opacity: 1;
+                transform: translateY(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* Flame */
+        .flame {
+            position: absolute;
+
+            width: 13px;
+            height: 22px;
+
+            left: 0;
+            top: -22px;
+
+            background: #ff9d00;
+
+            border-radius: 50% 50% 50% 50%;
+
+            opacity: 0;
+
+            animation:
+                flameIn .5s ease 2.5s forwards,
+                flicker .5s infinite alternate 3s;
+        }
+
+        @keyframes flameIn {
+            from {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes flicker {
+            from {
+                transform: scale(1) rotate(-3deg);
+            }
+
+            to {
+                transform: scale(1.15) rotate(3deg);
+            }
+        }
+
+
+        /* Birthday Text */
+        h1 {
+            position: absolute;
+
+            bottom: 65px;
+
+            color: #c2185b;
+
+            font-size: clamp(28px, 6vw, 50px);
+
+            text-align: center;
+
+            opacity: 0;
+
+            transform: translateY(40px);
+
+            animation:
+                textIn 1.5s ease-out 3s forwards;
+
+            text-shadow:
+                2px 2px 5px rgba(255,255,255,.7);
+        }
+
+        @keyframes textIn {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .surprise-btn {
+    position: absolute;
+    bottom: 20px;
+
+    padding: 12px 25px;
+    border-radius: 25px;
+
+    background: #c2185b;
+    color: white;
+
+    text-decoration: none;
+    font-size: 16px;
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    animation: buttonIn 1s ease 4s forwards;
+
+    transition: 0.3s;
+}
+
+.surprise-btn:hover {
+    transform: scale(1.08);
+    background: #ad1457;
+}
+
+@keyframes buttonIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+    </style>
+</head>
+
+
+<body>
+
+    <div class="card">
+
+        <!-- Sparkles -->
+        <div class="sparkle s1"></div>
+        <div class="sparkle s2"></div>
+        <div class="sparkle s3"></div>
+        <div class="sparkle s4"></div>
+
+
+        <!-- Cake -->
+        <div class="cake">
+
+            <div class="cake-body"></div>
+
+            <div class="cream"></div>
+
+            <!-- Candle -->
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+        </div>
+
+
+        <!-- Birthday Text -->
+        <h1>Happy Birthday Mr.Jash</h1>
+        <a href="wish.html" class="surprise-btn">Open Your Surprise 🎁</a>
+    </div>
+
+
+    <script>
+
+        console.log("Birthday animation started!");
+
+    </script>
+
+</body>
+</html>
+\
